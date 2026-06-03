@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TadA-Bench Leaderboard Submission Metadata",
+  "type": "object",
+  "required": [
+    "method_name",
+    "modality",
+    "split",
+    "prediction_csv",
+    "code_url",
+    "uses_tadabench_train_only",
+    "external_data",
+    "test_labels_used_for_training",
+    "contact"
+  ],
+  "properties": {
+    "method_name": {"type": "string"},
+    "model_family": {"type": "string"},
+    "modality": {"type": "string", "enum": ["AA", "DNA", "RNA"]},
+    "split": {"type": "string", "enum": ["test", "val", "train"]},
+    "prediction_csv": {"type": "string"},
+    "code_url": {"type": "string"},
+    "uses_tadabench_train_only": {"type": "boolean"},
+    "external_data": {"type": "string"},
+    "test_labels_used_for_training": {"type": "boolean"},
+    "contact": {"type": "string"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": true
+}

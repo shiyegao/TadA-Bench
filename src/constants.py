@@ -1,0 +1,5 @@
+OFFICIAL_HF_DATASET = "JinGao/TadABench-1M"
+OFFICIAL_HF_DATASET_REVISION = "07168448caaafab4efb26eca04ec3e503edf1c04"
+
+OFFICIAL_SEQ_TYPES = ("AA", "DNA", "RNA")
+OFFICIAL_SPLITS = ("train", "val", "test")

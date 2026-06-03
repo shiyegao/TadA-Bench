@@ -1,0 +1,13 @@
+{
+  "method_name": "ExampleMethod",
+  "model_family": "ExampleFamily",
+  "modality": "AA",
+  "split": "test",
+  "prediction_csv": "examples/example_leaderboard_submission.csv",
+  "code_url": "https://example.com/repo",
+  "uses_tadabench_train_only": true,
+  "external_data": "None",
+  "test_labels_used_for_training": false,
+  "contact": "maintainer@example.com",
+  "notes": "Format-only metadata example."
+}

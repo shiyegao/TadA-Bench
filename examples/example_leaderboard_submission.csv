@@ -1,0 +1,2 @@
+sequence,prediction,method_name,model_family,modality,split,code_url,commit_hash,notes
+MSEVEFSHEYWMRHALTLAKRARDEREVPVGAVLVLNNRVIGEGWNRMIGLNDPTAHAELMAVRDACNRLGSYRLLETTMYVTFEPCVMCAGAMIHSRIGRVVFGVRNSKRGAAGSLMNVLNYPGMNHRVEIVEGILADECAALLCDFYRMPRRVFKKQKRTKSAIN,0.5,ExampleMethod,ExampleFamily,AA,test,https://example.com/repo,example-commit,format-only example
