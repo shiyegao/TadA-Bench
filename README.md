@@ -8,7 +8,7 @@
   <a href="https://arxiv.org/abs/2606.02624"><img src="https://img.shields.io/badge/arXiv-2606.02624-b31b1b.svg" alt="arXiv"></a>
   <a href="https://tada-bench.github.io/"><img src="https://img.shields.io/badge/Project-Page-2ea44f.svg" alt="Project Page"></a>
   <a href="https://icml.cc/Conferences/2026"><img src="https://img.shields.io/badge/ICML%202026-Accepted-4b44ce.svg" alt="ICML 2026 Accepted"></a>
-  <a href="https://huggingface.co/datasets/JinGao/TadABench-1M"><img src="https://img.shields.io/badge/Hugging%20Face-Dataset-ffcc4d.svg" alt="Hugging Face Dataset"></a>
+  <a href="https://huggingface.co/datasets/JinGao/TadA-Bench"><img src="https://img.shields.io/badge/Hugging%20Face-Dataset-ffcc4d.svg" alt="Hugging Face Dataset"></a>
   <a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
 </p>
 
@@ -32,7 +32,7 @@
 <p align="center">
   <a href="https://tada-bench.github.io/">Project</a> ·
   <a href="https://arxiv.org/abs/2606.02624">Paper</a> ·
-  <a href="https://huggingface.co/datasets/JinGao/TadABench-1M">Dataset</a> ·
+  <a href="https://huggingface.co/datasets/JinGao/TadA-Bench">Dataset</a> ·
   <a href="LEADERBOARD.md">Leaderboard Policy</a>
 </p>
 
@@ -76,7 +76,7 @@ Load the benchmark with `datasets`:
 from datasets import load_dataset
 
 ds = load_dataset(
-    "JinGao/TadABench-1M",
+    "JinGao/TadA-Bench",
     revision="07168448caaafab4efb26eca04ec3e503edf1c04",
 )
 print(ds)
@@ -205,7 +205,7 @@ uv run python scripts/validate_leaderboard_submission.py \
   --submission path/to/submission.csv \
   --metadata_json path/to/metadata.json \
   --schema_json schemas/leaderboard_submission_schema.json \
-  --dataset JinGao/TadABench-1M \
+  --dataset JinGao/TadA-Bench \
   --dataset_revision 07168448caaafab4efb26eca04ec3e503edf1c04 \
   --seq_type AA \
   --split test \
@@ -238,7 +238,7 @@ If you use TadA-Bench, please cite the accompanying ICML 2026 paper:
 
 This project is licensed under the
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0). The Hugging
-Face dataset [`JinGao/TadABench-1M`](https://huggingface.co/datasets/JinGao/TadABench-1M)
+Face dataset [`JinGao/TadA-Bench`](https://huggingface.co/datasets/JinGao/TadA-Bench)
 is also released under Apache-2.0.
 
 ## Contact

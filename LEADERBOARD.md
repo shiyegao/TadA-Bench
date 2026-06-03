@@ -1,7 +1,7 @@
 # Leaderboard
 
 Official TadA-Bench leaderboard submissions are evaluated on the fixed Hugging
-Face splits from `JinGao/TadABench-1M` at revision
+Face splits from `JinGao/TadA-Bench` at revision
 `07168448caaafab4efb26eca04ec3e503edf1c04`.
 
 ## Submission Files
@@ -60,7 +60,7 @@ uv run python scripts/validate_leaderboard_submission.py \
   --submission path/to/submission.csv \
   --metadata_json path/to/metadata.json \
   --schema_json schemas/leaderboard_submission_schema.json \
-  --dataset JinGao/TadABench-1M \
+  --dataset JinGao/TadA-Bench \
   --dataset_revision 07168448caaafab4efb26eca04ec3e503edf1c04 \
   --seq_type AA \
   --split test \

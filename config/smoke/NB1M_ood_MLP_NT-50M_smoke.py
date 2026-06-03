@@ -6,7 +6,7 @@ task = "run"
 # Dataset
 dataset_type = "RegressionDataset"
 train_val_test = True
-huggingface_dataset = "JinGao/TadABench-1M"
+huggingface_dataset = "JinGao/TadA-Bench"
 huggingface_revision = OFFICIAL_HF_DATASET_REVISION
 del_special_tokens = True
 max_train_samples = 4
