@@ -130,7 +130,7 @@ mkdir -p predictions results/metrics logs
 uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_ESM2-35M.py
 uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_ESMC-300M.py
 uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_NT-50M.py
-uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_Carbon-3B.py
+uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_Carbon-500M.py
 ```
 
 Carbon-500M formal MLP runs should use the generated seed configs. Each config

@@ -123,7 +123,7 @@ Formal artifacts:
 | H200 summary CSV/MD | remote project storage: `results/carbon_summary_h200_full/` |
 | H200 completeness status | `results/carbon_summary_h200_full/carbon_summary_status.json`, `complete=true` |
 | Local H200 audit archive | `docs/artifacts/carbon_h200_artifacts_20260611_0511.tar.gz`, SHA256 `c98d04391fbe6b8c97104e86d739efb7814db6f4aa2065b52b306f56a30e3698` |
-| Local extracted H200 artifacts | `docs/artifacts/results/carbon_summary_h200_full/` and `docs/artifacts/results/metrics/future_round/` |
+| Extracted H200 artifact paths | The audit archive expands to `results/carbon_summary_h200_full/` and `results/metrics/future_round/`; extracted copies are intentionally not tracked separately |
 
 Completeness checks:
 
