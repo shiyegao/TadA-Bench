@@ -28,6 +28,12 @@ PREDICTION_FIELDS = [
     "example_index",
     "config_path",
     "git_commit",
+    "seed",
+    "repeat",
+    "revision",
+    "protocol",
+    "max_samples",
+    "is_subset",
 ]
 
 
@@ -438,6 +444,10 @@ def save_prediction_csv(cfg, mode: str, rows, labels_all, preds_all):
     modality = cfg_value(cfg, "seq_type", "unknown")
     config_path = cfg_value(cfg, "cfg_path", "unknown")
     git_commit = cfg_value(cfg, "git_commit", "unknown")
+    seed = cfg_value(cfg, "seed", "")
+    revision = cfg_value(cfg, "model_revision", "")
+    max_samples = cfg_value(cfg, f"max_{mode}_samples", cfg_value(cfg, "max_samples", ""))
+    is_subset = max_samples not in {"", None}
 
     with open(path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=PREDICTION_FIELDS)
@@ -466,6 +476,12 @@ def save_prediction_csv(cfg, mode: str, rows, labels_all, preds_all):
                     "example_index": row.get("example_index", i),
                     "config_path": config_path,
                     "git_commit": git_commit,
+                    "seed": seed,
+                    "repeat": "",
+                    "revision": revision,
+                    "protocol": cfg_value(cfg, "protocol", "supervised MLP"),
+                    "max_samples": max_samples,
+                    "is_subset": is_subset,
                 }
             )
 
@@ -490,6 +506,9 @@ def save_metric_json(cfg, mode: str, epoch: int, num_examples: int, total_score)
         "git_commit": cfg_value(cfg, "git_commit", "unknown"),
         "epoch": int(epoch),
     }
+    for attr in ["seed", "frozen_backbone", "model_revision", "num_tokens", "dtype"]:
+        if cfg is not None and hasattr(cfg, attr):
+            payload[attr] = json_safe(getattr(cfg, attr))
     with open(os.path.join(metric_dir, f"{run_id}_{mode}.json"), "w") as f:
         json.dump(payload, f, indent=2)
 

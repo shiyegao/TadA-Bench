@@ -120,6 +120,7 @@ Run a quick smoke check first:
 
 ```bash
 uv run python scripts/run.py --cfg_path config/smoke/TadABench_future_round_MLP_ESM2-35M_smoke.py
+uv run python scripts/run.py --cfg_path config/smoke/TadABench_future_round_MLP_Carbon-500M_smoke.py
 ```
 
 Full baseline configs:
@@ -129,12 +130,46 @@ mkdir -p predictions results/metrics logs
 uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_ESM2-35M.py
 uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_ESMC-300M.py
 uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_NT-50M.py
+uv run python scripts/run.py --cfg_path config/TadABench_future_round_MLP_Carbon-3B.py
+```
+
+Carbon-500M formal MLP runs should use the generated seed configs. Each config
+preserves the three learning rates from the public baseline setting, and the
+validation split should be used for hyperparameter selection:
+
+```bash
+for seed in 1 2 3; do
+  uv run python scripts/run.py \
+    --cfg_path config/generated_carbon/TadABench_future_round_MLP_Carbon-500M_seed${seed}.py
+done
+uv run python scripts/summarize_carbon_results.py --strict
+```
+
+Carbon zero-shot base-pair likelihood scoring can be run separately. Passing
+`--repeat` records audit metadata and, when `--run_id` is omitted, adds the
+repeat number to the output file names:
+
+```bash
+for repeat in 1 2 3; do
+  uv run python scripts/run_carbon_likelihood.py \
+    --model_name HuggingFaceBio/Carbon-500M \
+    --revision fns \
+    --splits val test \
+    --repeat ${repeat}
+done
+uv run python scripts/summarize_carbon_results.py --strict
 ```
 
 Additional smoke configs are available under `config/smoke/` for quick
 end-to-end checks. Full runs write prediction CSVs under
 `predictions/future_round/` and metric JSON files under
 `results/metrics/future_round/`.
+
+On Blackwell GPUs such as RTX 5080 (`sm_120`), ensure the active environment has
+a PyTorch build that supports the device before launching Carbon runs. If the
+locked environment reports `no kernel image is available for execution on the
+device`, upgrade the active venv's PyTorch build and run through the venv Python
+directly, or refresh the project lock for that hardware.
 
 After a successful full run, expect files named like:
 
@@ -148,12 +183,13 @@ results/metrics/future_round/<resolved_run_id>_test.json
 Prediction CSV columns:
 
 ```text
-sequence,y_true,y_pred,split,domain,run_id,model,modality,example_index,config_path,git_commit
+sequence,y_true,y_pred,split,domain,run_id,model,modality,example_index,config_path,git_commit,seed,repeat,revision,protocol,max_samples,is_subset
 ```
 
 Metric JSON files include `run_id`, `model`, `modality`,
 `hyperparameter_id`, `hyperparameters`, `split`, `num_examples`, `metrics`,
-`config_path`, `git_commit`, and `epoch`.
+`config_path`, `git_commit`, and `epoch`. Carbon runs also include repeat/seed
+or model-revision fields when available.
 
 ## Leaderboard Submissions
 
